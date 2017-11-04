@@ -1,5 +1,7 @@
 language: python
 
+script: nosetests --where test --with-xunit
+
 branches:
   only:
     - master
