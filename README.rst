@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/elkhound/elkhound.svg?branch=master
+    :target: https://travis-ci.org/elkhound/elkhound
+
 Elkhound is an opinionated, data-centric workflow engine.  It makes the following assumptions about your project:
 
 * Project workflow can be split into several tasks, each task has clearly defined input and output data files, ideally with no side effects. Tasks form a directed acyclic graph (i.e., no loops).
