@@ -1,0 +1,71 @@
+specs:
+  - code: 1000
+    name: foo
+    extension: csv.gz
+    flags:
+      - gzipped
+    schema:
+      - name: foo
+        type: int
+      - name: bar
+        type: float
+      - name: baz
+        type: str
+      - name: qux
+        type: datetime
+      - name: quux
+        type: bool
+    dialect:
+      delimiter: '|'
+
+  - code: 2000
+    name: bar
+    extension: csv
+    schema:
+      - name: foo
+        type: int
+      - name: bar
+        type: float
+
+  - code: 3000
+    name: baz
+    extension: pickle
+    flags:
+      - binary
+
+  - code: 9100
+    name: report
+    extension: xlsx
+    flags:
+      - binary
+
+  - code: 9200
+    name: plots
+    extension: dir
+    flags:
+      - directory
+
+  - code: 9900
+    name: summary
+    extension: txt
+
+tasks:
+  - class: test_runner.TaskFoo
+  - class: test_runner.TaskBar
+  - class: test_runner.TaskBazAlternative
+  - class: test_runner.TaskReportAndPlots
+  - class: test_runner.TaskSummary
+
+workflows:
+  full:
+    - 1000
+    - 2000
+    - 3000
+    - 9100
+    - 9200
+  csvs:
+    - 1000
+    - 2000
+  deliverables:
+    - 9100
+    - 9200

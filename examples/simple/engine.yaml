@@ -1,0 +1,36 @@
+specs:
+  - code: 1230
+    name: people
+    extension: csv.gz
+    flags:
+      - gzipped
+    schema:
+      - name: name
+        type: str
+      - name: dob
+        type: datetime
+      - name: is_employee
+        type: bool
+  - code: 2110
+    name: budget
+    extension: xlsx
+    flags:
+      - binary
+  - code: 4315
+    name: report
+    extension: txt
+  - code: 5214
+    name: plots
+    extension: dir
+    flags:
+      - directory
+
+tasks:
+  - class: tasks.DownloadDataTask
+  - class: tasks.GenerateReportTask
+  - class: tasks.PlotBudgetTask
+
+workflows:
+  monthly_briefing:
+    - 4315
+    - 5214
