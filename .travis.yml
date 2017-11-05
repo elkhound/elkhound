@@ -8,8 +8,12 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install .
+  - pip install codecov
 
-script: nosetests --where test --with-xunit
+script: nosetests --where test --with-xunit --with-coverage
+
+after_success:
+  - codecov
 
 branches:
   only:
