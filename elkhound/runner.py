@@ -47,7 +47,7 @@ def read_context(param_file_paths, command_line_params):
     return context
 
 
-def run_engine(timestamp=None, callback=None, logs=True):
+def run_engine(timestamp: int = None, callback=None, logs: bool = True):
     """
     Set up and run an engine instance. Read config files, parse command-line arguments,
     register file specs and tasks found in the config, set up logging, etc. and run the engine.
